@@ -89,9 +89,11 @@ end
 
 This will also change the file `db/schema.rb` updating it to include the new table structure.
 
-Let's do it again. Now, we'll create a User model with name, email, street address, and age as column names.
+##### Let's do it again!
 
-<details><summary>What's the command to create the User model and migration? Try to write out the command without opening the hint below.</summary>
+Now, we'll create a User model with name, email, street address, and age as column names.
+
+<details><summary>What's the command to create the User model and migration? Try to write out the command without opening this hint.</summary>
 `rails g model user name:string email:string street_address:string age:integer`
 </details>
 
