@@ -89,7 +89,37 @@ end
 
 This will also change the file `db/schema.rb` updating it to include the new table structure.
 
-Afterwards you should commit your changes before moving on to work with this table.
+Let's do it again. Now, we'll create a User model with name, email, street address, and age as column names.
+
+<details><summary>What's the command to create the User model and migration? Try to write out the command without opening the hint below.</summary>
+`rails g model user name:string email:string street_address:string age:integer`
+</details>
+
+This should give us a file that looks quite similar to the migration that generated our cars table.
+
+Migration:
+
+```ruby
+class CreateUsers < ActiveRecord::Migration
+  def change
+    create_table :users do |t|
+      t.string :name
+      t.string :email
+      t.string :street_address
+      t.integer :age
+
+      t.timestamps null: false
+    end
+  end
+end
+```
+
+<details>
+<summary>After generating this new migration, what do we need to run?</summary>
+`rake db:migrate`
+</details>
+
+Afterwards, you should commit your changes before moving on to work with these tables.
 
 ### Migrations are forever
 
