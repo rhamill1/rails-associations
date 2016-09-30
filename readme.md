@@ -60,7 +60,7 @@ See http://stackoverflow.com/questions/17918117/rails-4-datatypes
 
 <img src="https://chryus.files.wordpress.com/2014/02/img_1839.jpg" style="max-width: 600px">
 
-#### 2-steps to setting up relationships in Rails
+#### 2-steps to setting up model relationships in Rails
 
 Rails requires us to do two things to establish a relationship.  
 
