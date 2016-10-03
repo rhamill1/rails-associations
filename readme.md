@@ -173,7 +173,7 @@ Rails requires us to do two things to establish a relationship.
 1. Database - create the foreign key
 2. Models - tell Rails about the relationship so it makes convenient methods
 
-**First: Database** we need to add an `other_id` column in the database.  
+**First: Database** we need to add an `other_id` foreign key column in the database.  
 
 This column will be on the model that **belongs_to** the parent model.  
 
