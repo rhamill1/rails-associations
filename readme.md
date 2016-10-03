@@ -83,49 +83,50 @@ SQL, Structured Query Language, is a specialized language used to create, manipu
   * `GRANT` access to parts of the table
   
   
-Here's a simple example that you can run in `psql` if you'd like:
+<details><summary>Click for a simple SQL example that you can run in `psql`</summary>
 
-```sql
-CREATE TABLE people (
-  id serial primary key,
-  name TEXT,
-  age INTEGER
-);
+  ```sql
+  CREATE TABLE people (
+    id serial primary key,
+    name TEXT,
+    age INTEGER
+  );
 
-CREATE TABLE pets (
-  id SERIAL primary key,
-  name TEXT,
-  age INTEGER,
-  breed TEXT,
-  people_id INTEGER
-);
+  CREATE TABLE pets (
+    id SERIAL primary key,
+    name TEXT,
+    age INTEGER,
+    breed TEXT,
+    people_id INTEGER
+  );
 
-INSERT INTO people ( name, age)
-      VALUES ('Zed', 37);
+  INSERT INTO people ( name, age)
+        VALUES ('Zed', 37);
 
-INSERT INTO people ( name, age)
-    VALUES ('Bobby', 7);
-    
-SELECT * FROM people;
+  INSERT INTO people ( name, age)
+      VALUES ('Bobby', 7);
 
-INSERT INTO pets (name, breed, age, people_id)
-      VALUES ( 'Fluffy', 'Unicorn', 1000, 1);
+  SELECT * FROM people;
 
-INSERT INTO pets (name, breed, age, people_id)
-      VALUES ('Rocko', 'Dog', 4, 2);
+  INSERT INTO pets (name, breed, age, people_id)
+        VALUES ( 'Fluffy', 'Unicorn', 1000, 1);
 
-INSERT INTO pets (name, breed, age, people_id)
-     VALUES ('Gigantor', 'Robot', 25, 1);
+  INSERT INTO pets (name, breed, age, people_id)
+        VALUES ('Rocko', 'Dog', 4, 2);
 
-INSERT INTO pets (name, breed, age, people_id)
-     VALUES ('Goldy', 'Fish', 1, 2);
-     
-SELECT * FROM pets;
+  INSERT INTO pets (name, breed, age, people_id)
+       VALUES ('Gigantor', 'Robot', 25, 1);
 
-SELECT * FROM people 
-     LEFT JOIN pets 
-     ON people.id = pets.people_id;
-```
+  INSERT INTO pets (name, breed, age, people_id)
+       VALUES ('Goldy', 'Fish', 1, 2);
+
+  SELECT * FROM pets;
+
+  SELECT * FROM people 
+       LEFT JOIN pets 
+       ON people.id = pets.people_id;
+  ```
+</details>
 
 #### Why Are Joins Important?
 
