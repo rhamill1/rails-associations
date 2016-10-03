@@ -41,6 +41,108 @@ See http://stackoverflow.com/questions/17918117/rails-4-datatypes
 
 > Note: prefer datetime unless you have a specific reason to use one of the others.  ActiveRecord has extra tools for datetime
 
+### A Brief Foray into SQL
+ 
+> "In which we truly learn to appreciate ActiveRecord."
+
+
+##What is a Relational Database (RDB)?
+
+Relational databases were invented in the 1970's as a way to structure data so that it can be queried by a "relational algebra." The basic idea of relational model, though, was to use collections of data, Tables, where each database manages Relations among the data in various tables. Each table is organized like a spreadsheet with a Row (also known as "record") for each data item and with attributes of those items arranged in Columns*.
+
+
+**Authors Table**
+
+| `id` | `first_name` | `last_name` | `year_of_birth` | `year_of_death` |
+| :---  | :---  | :---  | :---  | :---  |
+| 1 | Rudyard | Kipling | 1865 | 1936 |
+| 2 | Lewis | Carroll | 1832 | 1892 |
+| 3 | H.G.  | Wells |  1866 | 1946  |
+
+**Books Table**
+
+| `id` | `title` | `publication_year` | `isbn` | `author_id` |
+| :---  | :---  | :---  | :---  | :---  |
+| 1 | The Jungle Book | 1894 | 9788497896696 | 1 |
+| 2 | Alice's Adventures in Wonderland | 1865 | 9781552465707 | 2 |
+| 3 | Rikki-Tikki-Tavi | 1894 | 1484123689 | 1 |
+| 4 | Through the Looking-Glass | 1871 | 9781489500182 | 2 |
+| 5 | The Time Machine |  1895  | 9781423794417 | 3 |
+
+**Primary Key:** The primary key of a relational table uniquely identifies each record in the table. This column is automatically assigned a btree index in postgres.
+
+##What is SQL?
+
+SQL, Structured Query Language, is a specialized language used to create, manipulate, and query tables in relational databases.
+
+* Data **Definition** Language
+  * Define and update database's structure
+  * `CREATE`, `ALTER`, `RENAME`, `DROP`, `TRUNCATE`
+  * Data Types
+  * Constraints
+* Data **Manipulation** Language
+  * CRUD data within the database
+  * `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `ORDER BY`    
+  * `UPSERT` (attempts an UPDATE, or on failure, INSERT)
+  * Queries
+  * `JOIN`s
+  * Aggregation: `GROUP BY`, `SUM`, `AVG`, `MIN`
+* Data **Control** Language (beyond our scope)
+  * `GRANT` access to parts of the table
+  
+  
+
+```sql
+CREATE TABLE people (
+  id serial primary key,
+  name TEXT,
+  age INTEGER
+);
+
+CREATE TABLE pets (
+  id SERIAL primary key,
+  name TEXT,
+  age INTEGER,
+  breed TEXT,
+  people_id INTEGER
+);
+
+INSERT INTO people ( name, age)
+      VALUES ('Zed', 37);
+
+INSERT INTO people ( name, age)
+    VALUES ('Bobby', 7);
+
+INSERT INTO pets (name, breed, age, people_id)
+      VALUES ( 'Fluffy', 'Unicorn', 1000, 1);
+
+INSERT INTO pets (name, breed, age, people_id)
+      VALUES ('Rocko', 'Dog', 4, 2);
+
+INSERT INTO pets (name, breed, age, people_id)
+     VALUES ('Gigantor', 'Robot', 25, 1);
+
+INSERT INTO pets (name, breed, age, people_id)
+     VALUES ('Goldy', 'Fish', 1, 2);
+```
+
+
+
+## Why Are Joins Important
+
+Each table in a relational database is considered a relation wherein all the data is naturally related by a single set of attributes defined for it. However, in order to be relational we need to be able to make queries between relations or tables of data.
+
+JOINS are our means of implementing queries that join together data and show results from multiple tables.
+
+
+![Joins](https://raw.githubusercontent.com/SF-WDI-LABS/shared_modules/master/04-ruby-rails/intro-sql/27/assets/sqljoins.jpg)
+
+
+## Keys
+
+* Primary Key: The primary key of a relational table uniquely identifies each record in the table. This column is automatically assigned a btree index in postgres.
+
+* Foreign Key: a foreign key is a field (or collection of fields) in one table that uniquely identifies a row of another table. **In other words, a foreign key is a column or a combination of columns that is used to establish and enforce a link between the data in two tables.**
 
 ### Associations: Relationships Between Models
 
@@ -49,6 +151,8 @@ See http://stackoverflow.com/questions/17918117/rails-4-datatypes
 | One-to-One | 1:1 | An instance of one model is associated with one (and only one) instance of another model | One author can have one primary mailing address. |
 | One-to-Many | 1:N | Parent model is associated with many children from another model | One author can have many books. |
 | Many-to-Many | N:N | Two models that can both be associated with many of the other. | Libraries and books. One library can have many books, while one book can be in many libraries. |
+
+
 
 ### One-To-Many (1:N) Relationship
 
