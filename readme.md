@@ -287,25 +287,54 @@ Make sure you then update the models with the appropriate `has_many` and `belong
 
 ## Challenges, Part 1: 1:N
 
-Head over to the [One-To-Many Challenges](one_to_many_challenges.md) and work together in pairs.
+Head over to the [One-To-Many Challenges](one_to_many_challenges.md).
 
 -----
 
 ## Many-To-Many (N:N) with 'through'
 
-**Example:** A student `has_many` courses and a course `has_many` students. Thinking back to our SQL discussions, recall that we used a *join table* to create this kind of association.
+**Example:** A student `has_many` courses and a course `has_many` students.  Here's what each table might look like:
+
+Courses
+
+| id |  abbreviation | semester |   
+| :-- | :-----------   | :-------- |  
+| 1  |  MATH103      |   F16    |  
+| 2  |  ENGL200      |   F16    |   
+| 3  |  CHEM104      |   F16    |  
+| 4  |  COMP200      |   F16    | 
+| 5  |  BSKT101      |   F16    |
+
+
+Students
+
+| id |  first_name  | last_name    |      
+| :-- | :-----------  | :---------    |     
+| 1  |  Eliza       |  Doolittle   |      
+| 2  |  Eliza       |  Thornberry  |    
+| 3  |  Eliza       |  Bennet      |    
+
+
+**Check for understanding**: Where should we add the foreign key? 
+
+
+#### Join Tables
+
+We'll need a *join table* to create this kind of association.
 
 A *join* table has two different foreign keys, one for each model it is associating. (It can also have other fields.) In the example below, 3 students have been associated with 4 different courses:
 
-| student_id | course_id |
-| ---------- | --------- |
-| 1          | 1         |
-| 1          | 2         |
-| 1          | 3         |
-| 2          | 1         |
-| 2          | 4         |
-| 3          | 2         |
-| 3          | 3         |
+| id |  student_id | course_id | grade |   
+| :-- | :----------- | :--------- | :----- |  
+| 1  |  1          | 1         |   A   |  
+| 2  |  1          | 2         |   B   |  
+| 3  |  1          | 3         |   B   |   
+| 4  |  2          | 1         |   A   |  
+| 5  |  2          | 4         |   C   |  
+| 6  |  3          | 2         |   A   |  
+| 7  |  3          | 3         |   B   |  
+
+
 
 ### Set Up
 
