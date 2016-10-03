@@ -37,17 +37,17 @@ i.order
 ```
 
 **Once you've finished creating the models:**
-  1. Create five items
-  2. Create two orders
-  3. Assign three items to the order with id = 1 and two items to the order with id = 2  _(note you may have to adjust the ids if you've created and deleted many)_
+  1. Create five items.  
+  2. Create two orders.   
+  3. Assign three items to the order with id = 1 and two items to the order with id = 2  _(note you may have to adjust the ids if you've created and deleted orders)_.  
   4. For one order, iterate through each of its items and print the item details to the console.
-  4. Map each item in your database to its name.
+  4. Return a new array that maps each item in your database to its name with `map`.
 
 ## Stretch Challenge
 
 Select only the items in an order that are less than a certain price.
 
-**Hint:** Take a look at the ActiveRecord Docs for <a href="http://guides.rubyonrails.org/active_record_querying.html#conditions" target="_blank">`.where` conditions</a>. You'll need to write a SQL query in the `.where` method.
+**Hint:** Take a look at the ActiveRecord Docs for <a href="http://guides.rubyonrails.org/active_record_querying.html#conditions">`.where` conditions</a>. You'll need to write a SQL query in the `.where` method.
 
 Start with something like this:
 

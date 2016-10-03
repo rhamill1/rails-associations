@@ -16,7 +16,7 @@ For these challenges, continue to work in your `practice` Rails app.
 
 ## Stretch Challenges
 
-1. Add <a href="http://guides.rubyonrails.org/active_record_validations.html" target="_blank">validations</a> to your `Actor` and `Movie` models:
+1. Add <a href="http://guides.rubyonrails.org/active_record_validations.html">validations</a> to your `Actor` and `Movie` models:
   * All attributes for actors and movies should be required (**Hint:** `presence: true`)
   * For movies, the year should not be in the future (**Hint:** Look at <a href="http://guides.rubyonrails.org/active_record_validations.html#numericality" target="_blank">numericality</a>)
 

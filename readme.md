@@ -12,7 +12,7 @@ Location: SF
 <!-- framing the "why" in big-picture/real world examples -->
 *This workshop is important because:*
 
-ActiveRecord manages the schemas, models, and the structure of our relational database so that we can do all of the CRUD functionality we're used to without learning SQL. Active Record lets us create associations between types of data, which better models the real world and which will be an important part of features like user login for complex sites. 
+ActiveRecord manages the schemas, models, and the structure of our relational database so that we can do all of the CRUD functionality we're used to without learning SQL. Active Record lets us create associations between types of data, which better models the real world and which will be an important part of features like user login for complex sites.
 
 ### What are the objectives?
 <!-- specific/measurable goal for students to achieve -->
@@ -34,7 +34,7 @@ In this lesson we'll talk about how tables in a relational database relate to ea
 
 
 ### A Brief Foray into SQL
- 
+
 > "In which we truly learn to appreciate ActiveRecord."
 
 
@@ -81,8 +81,8 @@ SQL, Structured Query Language, is a specialized language used to create, manipu
   * Aggregation: `GROUP BY`, `SUM`, `AVG`, `MIN`
 * Data **Control** Language (beyond our scope)
   * `GRANT` access to parts of the table
-  
-  
+
+
 <details><summary>Click for a simple SQL example that you can run in `psql`</summary>
 
   ```sql
@@ -122,8 +122,8 @@ SQL, Structured Query Language, is a specialized language used to create, manipu
 
   SELECT * FROM pets;
 
-  SELECT * FROM people 
-       LEFT JOIN pets 
+  SELECT * FROM people
+       LEFT JOIN pets
        ON people.id = pets.people_id;
   ```
 </details>
@@ -241,20 +241,20 @@ Now, let's jump into our rails console by typing `rails c` at a command prompt, 
 ```ruby
 Pet.count
 Owner.count
-fido = Pet.create(name: "Fido")
+theo = Pet.create(name: "Theo")
 lassie = Pet.create(name: "Lassie")
-nathan = Owner.create(name: "nathan")
-nathan.pets
-fido.owner
-nathan.pets << fido # Makes "fido" one of my pets
-nathan.pets << lassie # Makes "lassie" another one of my pets
-nathan.pets.size
-nathan.pets.map(&:name)
-nathan.pets.each {|x| puts "My pet is named #{x.name}!"}
-fido.owner
+ilias = Owner.create(name: "Ilias")
+ilias.pets
+theo.owner
+ilias.pets << theo # Makes "Theo" one of Ilias's pets
+ilias.pets << lassie # Makes "Lassie" another one of Ilias's pets
+ilias.pets.size
+ilias.pets.map(&:name)
+ilias.pets.each {|x| puts "My pet is named #{x.name}!"}
+theo.owner
 
 # What's going to be returned when we do this?
-fido.owner.name
+theo.owner.name
 ```
 
 Remember: We just saw that in Rails, we can associate two model **instances** together using the `<<` operator.

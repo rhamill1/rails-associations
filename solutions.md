@@ -7,7 +7,7 @@
 1. Create an item:
 
   ```ruby
-  i = Item.create(name: "lamp", description: "desk lamp", price: 20)
+  i = Item.create(name: "lamp", description: "desk lamp", price: 2000)
   ```
 
 2. Create an order:
@@ -41,14 +41,14 @@
 **Stretch:** Select only the items in an order that are less than a certain price:
 
   ```ruby
-  o.items.where("price < ?", 30)
+  o.items.where("price < ?", 3000)
   ```
 
 ## Many-To-Many Challenges
 
 *Solutions for Rails console portions:*
 
-Create actor, movie, and association:
+Create and use actor, movie, and association:
 
 ```ruby
 arnold = Actor.create(first_name: "Arnold", last_name: "Schwarzenegger")
