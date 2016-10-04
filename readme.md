@@ -211,11 +211,11 @@ class Owner < ActiveRecord::Base
 end
 
 class Pet < ActiveRecord::Base
-  belongs_to :owner
+  belongs_to :owner, optional: true
 end
 ```
 
-Note: `belongs_to` uses the singular form of the class name (`:owner`), while `has_many` uses the pluralized form (`:pets`).
+Note: `belongs_to` uses the singular form of the class name (`:owner`), while `has_many` uses the pluralized form (`:pets`).  If we don't set `optional: true`, every pet will be *required* to have an owner. 
 
 If you think about it, this is exactly how you'd want to say this in plain English. For example, if we were just discussing the relationship between pets and owners, we'd say:
 
